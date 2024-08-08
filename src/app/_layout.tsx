@@ -1,6 +1,7 @@
 import { Tabs, usePathname } from 'expo-router';
-import { Dimensions, Modal, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'
+import styles from './styles';
 
 export default function Layout(){
     const user = "Cadmo"
@@ -8,7 +9,7 @@ export default function Layout(){
     
     return (
         <View style={{flex: 1}}>
-            <Tabs screenOptions={{tabBarStyle: styles.tabStyle, tabBarLabelStyle:{fontSize: 15}, tabBarActiveTintColor: '#fff', tabBarInactiveTintColor: '#000', headerShown: false}}>
+            <Tabs screenOptions={{tabBarStyle: styles.appLayout.tabStyle, tabBarLabelStyle:{fontSize: 15}, tabBarActiveTintColor: '#fff', tabBarInactiveTintColor: '#000', headerShown: false}}>
                 <Tabs.Screen
                     name='index'
                     options={{
@@ -32,7 +33,7 @@ export default function Layout(){
                             }
                             return <FontAwesome name='bar-chart' color={color} size={30} />
                         },
-                        tabBarStyle: showTabs ? styles.tabStyle: {display: 'none'}
+                        tabBarStyle: showTabs ? styles.appLayout.tabStyle: {display: 'none'}
                     }}
                 />
                 <Tabs.Screen
@@ -53,13 +54,4 @@ export default function Layout(){
     )
 }
 
-const styles = StyleSheet.create({
-  tabStyle: {
-    borderRadius: 50,
-    height: Dimensions.get('screen').height * 0.07,
-    marginBottom: 10,
-    marginHorizontal: 10,
-    position: 'relative',
-    backgroundColor: '#596dab',
-  }
-});
+

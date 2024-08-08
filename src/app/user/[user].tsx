@@ -1,14 +1,15 @@
 import { Link, useLocalSearchParams } from 'expo-router';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import Header from '../../components/header';
+import styles from '../styles';
 
 export default function User() {
   const { user } = useLocalSearchParams()
   return (
-    <View style={styles.body}>
+    <View style={styles.user.body}>
       <Header name={"Perfil de " + user} tipo={2} />
       <View>
-        <ScrollView contentContainerStyle={styles.content} style={styles.container}>
+        <ScrollView contentContainerStyle={styles.user.content} style={styles.user.container}>
           <Text>Minha Tela Inicial</Text>
           <Link href={'../'}>Home Page {user}</Link>
         </ScrollView>
@@ -16,18 +17,3 @@ export default function User() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1
-  },
-  container: {
-    backgroundColor: '#fff',
-    marginTop: Dimensions.get('screen').height * 0.1,
-    marginBottom: Dimensions.get('screen').height * 0.1,
-  },
-  content: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});

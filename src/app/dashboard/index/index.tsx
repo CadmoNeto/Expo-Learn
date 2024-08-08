@@ -1,27 +1,30 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
-
-function handleIncrement() {
-  apertos++
-}
-
-var apertos = 0
+import { Button, Text, View } from 'react-native';
+import IconButton from '../../../components/iconButton';
+import { useState } from 'react';
+import { router } from 'expo-router';
+import styles from '../../styles';
 
 export default function Dashboard() {
+  const [apertos, setCount] = useState(0)
+
+  const handleIncrement = () => {
+    setCount(apertos + 1)
+  }
+
+  const goToCalculator = () => {
+    router.push('/calculadora/')
+  }
+
   return (
-    <View style={styles.container}>
+    <View style={styles.dashboard.container}>
       <Text>Dashboard Painel</Text>
+      
       <Text style={{marginBottom: 5}}>Você apertou o botão {apertos} vezes!</Text>
       {apertos == 69 && <Text>Você é safado</Text>}
-      <Button title='' onPress={handleIncrement}></Button>
+      
+      <IconButton tipo='plus' onPress={handleIncrement} />
+
+      <Button title='Calculadora' onPress={goToCalculator} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

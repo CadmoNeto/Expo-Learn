@@ -24,12 +24,12 @@ export default function Layout(){
                     headerShadowVisible: false,
                     headerTitleStyle:{
                         fontWeight: 'bold',
-                        fontSize: 30,
+                        fontSize: 26,
                         color: '#000'
                     },
                     headerLeft: () => 
                         <Link href={'dashboard/'} style={{marginRight: 15}}>
-                            <FontAwesome name="arrow-left" size={25} color={'#000'} />
+                            <FontAwesome name="arrow-left" size={24} color={'#000'} />
                         </Link>
                     ,
                     title: "Configurações"
