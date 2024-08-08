@@ -49,6 +49,20 @@ export default function Layout(){
                         }
                     }}
                 />
+                <Tabs.Screen
+                    name='calculator/index'
+                    options={{
+                        title: 'Calculadora',
+                        tabBarIcon: ({focused, color}) => {
+                            if (focused) {
+                                return <FontAwesome name='calculator' color={color} size={30} />
+                            }
+                            return <FontAwesome name='calculator' color={color} size={30} />
+                        }
+                    }}
+                />
+                
+                <Tabs.Screen name='styles' options={{href: null}} />
             </Tabs>
         </View>
     )
