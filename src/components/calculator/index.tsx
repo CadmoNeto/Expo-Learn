@@ -6,6 +6,7 @@ import CalculatorDisplay from "./calculatorDisplay";
 export default function Calculator (){
 
     const [valorTela, setValorTela] = useState('')
+    const [valorTelaSuperior, setValorTelaSuperior] = useState('')
     const [valorAux1, setValorAux1] = useState(0)
     const [valorAux2, setValorAux2] = useState(0)
     const [operador, setOperador] = useState('')
@@ -14,9 +15,19 @@ export default function Calculator (){
         realizarOperacao(valorAux1, valorAux2, operador)
     }, [valorAux2])
 
+    useEffect(() => {
+        if (valorAux1 == 0){
+            setValorTelaSuperior("")
+        }
+        else{
+            setValorTelaSuperior(valorAux1 + " " + operador)
+        }
+    }, [operador])
+
     const realizarOperacao = (valor1: number, valor2: number, operador: string) => {
         let valor = 0
         let valorString = ''
+
         switch (operador) {
             case "÷":
                 valor = valor1 / valor2
@@ -142,7 +153,6 @@ export default function Calculator (){
                 else{
                     setValorAux2(Number.parseInt(valorTela))
                 }
-                // realizarOperacao(valorAux1, valorAux2, operador)
                 break
         }
     }
@@ -175,7 +185,10 @@ export default function Calculator (){
     
     return(
         <View style={styles.calculadora}>
-            <CalculatorDisplay displayValue={valorTela} />
+            <CalculatorDisplay
+                displayValue1={valorTelaSuperior}
+                displayValue2={valorTela}
+            />
             <CalculatorKeyboard onPress={recebeValor} />
         </View>
     )
